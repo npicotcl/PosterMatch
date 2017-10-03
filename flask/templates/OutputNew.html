@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PosterMatch!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/new-age.css" rel="stylesheet">
+
+  </head>
+
+<!-- Automatic Scrolling to See results -->
+{% if bool1==True %}    
+    
+<script type="text/javascript">
+function pageScroll() {
+window.scrollBy(0,1900); // horizontal and vertical scroll increments
+
+}
+</script>
+
+  <body onLoad="pageScroll()" id="page-top">
+{% elif bool2==True %} 
+  
+<script type="text/javascript">
+function pageScroll() {
+window.scrollBy(0,3300); // horizontal and vertical scroll increments
+
+}
+</script>
+
+  <body onLoad="pageScroll()" id="page-top">     
+      
+{% else %}        
+  <body id="page-top">
+
+{% endif%}
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><b><i>What is PosterMatch! ?</b></i></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#Poster"><b>Find Posters!</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#TwoPosters"><b>Merge Posters!</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact"><b>Contact</b></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   
+      
+     
+      
+    <header class="masthead">
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-lg-7 my-auto">
+            <div class="header-content mx-auto">
+              <h1 class="mb-5"><br><br><br><i><font color="red"> PosterMatch! </font></i> is an app that matches movie posters to an uploaded image design and/or a written synopsis. <br> The app uses high level image and text recognition algorithms. <br> Designers, marketing teams or poster aficionados enjoy this unique tool!</h1>
+              <a href="#Poster" class="btn btn-outline btn-xl js-scroll-trigger">Let's give it a try!</a>
+            </div>          
+        </div>
+      </div>
+    </header>
+
+
+    <!-- Section where user can insert image and/or text, and choose genre, release dates and production country -->
+    <section class="download" id="Poster">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h2><b>Find Movie Posters!</b></h2>
+          <p class="text-muted"><font color="red">Upload an Image and/or Insert a Synopsis</font></p>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 my-auto">
+            <div class="device-container">
+                      <div class = "container">
+                         <h3> Upload your Image</h3><br>
+                        <form method=post enctype=multipart/form-data action="{{ url_for('upload') }}"> <!-- Upload Image -->
+                          <p><input type=file name=file>
+                             <input type=submit value=Upload>
+                        </form>
+                      </div>
+                      
+                    <img id=Image1 src={{ filename }} class="img-fluid" alt=""> <!-- Show Uploaded Image -->
+                  </div>
+          </div>
+            
+          <form  action="/output" method="GET">     
+          <div class="col-lg-8 my-auto">
+            <div class="container-fluid">
+             <fieldset>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    
+                    <h3>Genre</h3>
+                   
+                    <!-- Select Genre -->             
+                    <div class="dropdown">
+                    <select id="genre" name="genre">
+                        <option value="All" selected="selected">All</option>
+                        <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Family">Family</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="History">History</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Music">Music</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="War">War</option>
+                        <option value="Western">Western</option>
+                    </select>
+                    </div> 
+                    
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <!-- Define Production Country -->
+                    <h3>Production Country</h3>
+                   
+                      
+                    <input type="text" id="country" name='country' style="width:150px" placeholder="e.g. US">
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-present text-primary"></i><br><br>
+                    
+		    <!-- Define Release Year Period -->
+		    <h3>Minimum Year of Release</h3>
+                   
+                      
+                    <input type="text" id="date1" name='date1' style="width:150px" placeholder="e.g. 2000">
+                    
+                      
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-lock-open text-primary"></i><br><br>
+                    <h3>Maximum Year of Release</h3>
+                    <!-- <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>-->
+                    
+                    <input type="text" id="date2" name='date2' style="width:150px" placeholder="e.g. 2017">
+                      
+                      
+                      
+                  </div>
+                </div>
+              </div>
+            </div><br><br>
+             
+               <div>
+	       
+	         <!-- Insert Movie Pitch -->
+                 <h3>Pitch of the Movie</h3>
+                 <i class="Movie Pitch"></i>
+                <textarea id="pitch" name="pitch" style="height:200px;width:300px;font-size:14pt;" placeholder="e.g. Write pitch/synopsis (optional)"></textarea><br><br>
+                
+                                   
+                </div>    
+              
+               <div>
+                
+                <button type="submit" class="btn btn-default btn-lg">Find the matching movie posters!</button>
+                   
+               </div>
+              
+         
+          </div>
+         </fieldset>
+        </div>
+      </div>
+   </form>           
+    
+   </section>
+   
+  <!-- Section to show movie posters matching uploaed poster and/or inserted pitch -->
+  {% if moviepath != "" %}    
+    <section class="contact bg-primary" id="ImageResults">
+      <div class="container">
+        <h2>Find out which movie posters are similar! <h2>
+    
+         <div class="container">
+          <div class="starter-template">
+              
+             {% if text %}
+                {% for i in index %}
+                <a href={{ moviepath[i] }}><img src={{ moviepath[i] }} width="250"></a>
+                {% endfor %}
+             {% else %}
+                  {% for i in index[0] %}
+                  <a href={{ moviepath[i] }}><img src={{ moviepath[i] }} width="250"></a>
+                  {% endfor %}
+              {% endif %} 
+           
+            
+       </div>
+
+    
+
+
+     </div><!-- /.container -->
+            
+            
+      </div>
+    </section>  
+    {% endif %}   
+      
+    
+    <!-- Section where user can insert 2 images, and choose genre, release dates, production country and weights for each image -->
+    <section class="download" id="TwoPosters">
+        
+        
+        
+        
+      <div class="container">
+        <div class="section-heading text-center">
+          <h2><b>Merge Posters!</b></h2>
+          <p class="text-muted"><font color="red">Upload two Images and Play with the Weight of each</font></p>
+          <hr>
+        </div>
+       <div class="col-lg-8 my-auto">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="device-container">      
+                      <div class = "container">
+                         <h3> Upload your 1st Image</h3><br>
+                        <form method=post enctype=multipart/form-data action="{{ url_for('upload2') }}"><!-- Upload Image1 -->
+                          <p><input type=file name=file2>
+                             <input type=submit value=Upload>
+                        </form>
+                      </div>
+                    <!-- Show Uploaded Image1 -->    
+                    <img id=Image2 src={{ filename2 }} class="img-fluid" alt="">
+                  </div>
+            </div>   
+           <div class="col-lg-6">
+            <div class="device-container">
+                                
+                      <div class = "container">
+                         <h3> Upload your 2nd Image</h3><br>
+                        <form method=post enctype=multipart/form-data action="{{ url_for('upload3') }}"> <!-- Upload Image2 -->
+                          <p><input type=file name=file3>
+                             <input type=submit value=Upload>
+                        </form>
+                      </div>
+                    <!-- Show Uploaded Image2 -->  
+                    <img id=Image3 src={{ filename3 }} class="img-fluid" alt="">
+                  </div>
+            </div>
+          
+            
+         <form  action="/output2movies" method="GET">
+             
+          <div class="col-lg-12 my-auto">
+            <div class="row">
+              <div class="col-lg-6"><br>
+	         <!-- Insert weight of Image1 -->
+                 <h3>Weight of 1st Image</h3> 
+                 <input type="text" id="weight1" name='weight1' placeholder="e.g. 0.50">
+              </div>
+              <div class="col-lg-6"><br>
+	         <!-- Insert weight of Image2 -->
+                 <h3>Weight of 2nd Image</h3> 
+                 <input type="text" id="weight2" name='weight2' placeholder="e.g. 0.50">
+              </div>  
+             </div>
+            </div>  
+             
+             
+             
+          <div class="col-lg-12 my-auto">
+            <div class="container-fluid">
+             <fieldset>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="feature-item">
+                    
+		    <!-- Select Genre -->
+                    <h3>Genre</h3>
+                  
+                                 
+                    <div class="dropdown">
+                    <select id="genre" name="genre">
+                        <option value="All" selected="selected">All</option>
+                        <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Family">Family</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="History">History</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Music">Music</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="War">War</option>
+                        <option value="Western">Western</option>
+                    </select>
+                    </div> 
+                    
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="feature-item">
+                    
+		    <!-- Define Production Country -->
+                    <h3>Production Country</h3>
+                   
+                      
+                    <input type="text" id="country" name='country' style="width:150px" placeholder="e.g. US">
+                    
+                  </div>
+                </div>
+              
+                <div class="col-lg-3">
+                  <div class="feature-item">
+                
+		    <!-- Define Year of Release Period -->
+                    <h3>Minimum Year of Release</h3>
+                   
+                      
+                    <input type="text" id="date1" name='date1' style="width:150px" placeholder="e.g. 2000">
+                    
+                      
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="feature-item">
+                    <i class="icon-lock-open text-primary"></i><br>
+                    <h3>Maximum Year of Release</h3>
+                    
+                    
+                    <input type="text" id="date2" name='date2' style="width:150px" placeholder="e.g. 2017">
+                      
+                      
+                      
+                  </div>
+                </div>
+              </div>
+            </div><br><br>
+             
+               
+              
+               <div>
+                
+                <button type="submit" class="btn btn-default btn-lg">Find the matching movie posters!</button>
+                   
+               </div>
+              
+         
+          </div>
+         </fieldset>
+        </div>
+      </div>
+   </form>           
+   
+    </section>
+
+
+    <!-- Section to show movie posters matching the convolution of uploaded posters -->
+        
+    {% if moviepath2 != "" %}        
+        
+    <section class="contact bg-primary" id="ImageResults2">
+      <div class="container">
+        <h2>Find out which movie posters are similar to the convoluted posters! <h2>
+    
+         <div class="container">
+          <div class="starter-template">
+              {% for i in index2[0] %}
+                <a href={{ moviepath2[i] }}><img src={{ moviepath2[i] }} width="250"></a>
+              {% endfor %}
+            
+           </div>
+
+    
+
+
+         </div>
+            
+            
+      </div>
+    </section>  
+    {% endif %} 
+    
+            
+        
+    <!-- Contact Information Section -->    
+    <section class="cta">
+      <div class="cta-content">
+        <div class="container">
+          
+          
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </section>
+
+    <section class="contact bg-primary" id="contact">
+      <div class="container">
+        <h2>Contact
+          <i class="fa fa-heart"></i>
+          Info!</h2>
+        <ul class="list-inline list-social">
+          <li class="list-inline-item social-email">
+            <a href="mailto:npicotcl@gmail.com"> 
+              <i class="fa fa-email"></i>
+            </a>
+          </li>
+          <li class="list-inline-item social-linkedin">
+            <a href="http://www.linkedin.com/in/nicolas-picot-clemente">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="list-inline-item social-github">
+            <a href="https://github.com/npicotcl">
+              <i class="fa fa-social-github"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>PosterMatch!</p>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            
+          </li>
+          <li class="list-inline-item">
+            <a href="http://www.moviematch.life/">www.moviematch.life</a>
+          </li>
+          <li class="list-inline-item">
+            
+          </li>
+        </ul>
+      </div>
+    </footer>
+    
+ <!--  <script language="javascript" type="text/javascript">
+        var d = new Date(); 
+       
+        document.getElementById("Image1").src = 
+          "static/img/Image1.jpg?ver=" + 
+           d.getTime();    
+   </script>          -->
+      
+    <!-- Bootstrap core JavaScript -->
+         
+      
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/popper/popper.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../static/js/new-age.min.js"></script>
+
+  </body>
+
+</html>
