@@ -8,7 +8,7 @@ It is aimed to help designers during the creation process of movie posters by:
 The app provides also the possibility to match posters using both the image design and written synopsis.
 Additionally, the user can find matching posters from two uploaded image designs.
 
-### Piece of codes used to create the app can be found in this repository:
+### Pieces of code used to create the app can be found in this repository:
 
   - <b>CreateFillTableDB.ipynb</b>: This code creates a PostgreSQL database and define a table, in which are stored movie information taken from themoviedb.org API, such as movie poster image link, synopsis, genre, production countries, etc...
   - <b>ProcessImageAndSynopsis.ipynb</b>: This code processes poster images from links in the database through the pretained VGG16 deep neural network. 4096 features are extracted from the second-to-last layer (fully connected "fc2") and stored in the database. Similarly, every words of each movie synopsis are processed through a pretrained Word2Vec Google News neural network. Words that occur in similar contexts have similar embeddings, and are represented in a 300 dimensional space. These 300 features are stored in the database.
