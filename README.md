@@ -6,7 +6,7 @@ It is aimed to help designers during the creation process of movie posters by:
   2. Matching posters according to their written synopsis which helps visualizing existing posters of similar movies.
 
 The app provides also the possibility to match posters using both an image design and a written synopsis.
-Additionally, the user can find matching posters from two images that are merged together.
+Additionally, the user can upload two images and let the app show movie posters that are similar to the convolution of these two images.
 
 ### Pieces of code used to create the app can be found in this repository:
 
